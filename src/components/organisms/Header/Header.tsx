@@ -1,90 +1,33 @@
-import { useState } from 'react';
 
 export const Header = () => {
-    const [language, setLanguage] = useState('English');
 
-    return (
-        <header className="sticky top-0 z-50 w-full border-b border-[#e7f3ec] dark:border-[#1e3a29] bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md">
-            <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-                {/* Logo Section */}
-                <div className="flex items-center gap-2 group cursor-pointer">
-                    {/* Leaf Icon */}
-                    <div className="relative flex items-center justify-center">
-                        <span className="material-symbols-outlined text-primary text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>
-                            eco
-                        </span>
-                    </div>
-                    <h2 className="text-xl font-bold tracking-tight text-[#0d1b13] dark:text-white sm:text-2xl">
-                        FarmMitra
-                    </h2>
+    return (<div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar-start">
+            <div className="dropdown">
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /> </svg>
                 </div>
-
-                {/* Desktop Navigation Links */}
-                <nav className="hidden md:flex flex-1 items-center justify-center gap-8 px-8">
-                    <a href="#" className="text-sm font-semibold text-[#0d1b13] dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors">
-                        Home
-                    </a>
-                    <a href="#" className="text-sm font-semibold text-[#0d1b13] dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors">
-                        Advisory
-                    </a>
-                    <a href="#" className="text-sm font-semibold text-[#0d1b13] dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors">
-                        My Crops
-                    </a>
-                    <a href="#" className="text-sm font-semibold text-[#0d1b13] dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors">
-                        Profile
-                    </a>
-                </nav>
-
-                {/* Right Controls */}
-                <div className="flex items-center gap-4">
-                    {/* Language Toggle (Segmented Button) */}
-                    <div className="hidden sm:flex h-10 items-center rounded-xl bg-surface-light dark:bg-surface-dark p-1">
-                        <label className="cursor-pointer h-full px-3.5 flex items-center justify-center rounded-lg transition-all has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-[0_1px_2px_rgba(0,0,0,0.1)]">
-                            <input
-                                type="radio"
-                                name="language_toggle"
-                                value="English"
-                                checked={language === 'English'}
-                                onChange={(e) => setLanguage(e.target.value)}
-                                className="hidden peer"
-                            />
-                            <span className="text-xs font-bold text-gray-500 peer-checked:text-[#0d1b13] dark:text-gray-400 dark:peer-checked:text-white">
-                                English
-                            </span>
-                        </label>
-                        <label className="cursor-pointer h-full px-3.5 flex items-center justify-center rounded-lg transition-all has-[:checked]:bg-white dark:has-[:checked]:bg-background-dark has-[:checked]:shadow-[0_1px_2px_rgba(0,0,0,0.1)]">
-                            <input
-                                type="radio"
-                                name="language_toggle"
-                                value="Hindi"
-                                checked={language === 'Hindi'}
-                                onChange={(e) => setLanguage(e.target.value)}
-                                className="hidden peer"
-                            />
-                            <span className="text-xs font-bold text-gray-500 peer-checked:text-[#0d1b13] dark:text-gray-400 dark:peer-checked:text-white">
-                                हिंदी
-                            </span>
-                        </label>
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex items-center gap-3">
-                        <button className="flex h-10 min-w-[84px] cursor-pointer items-center justify-center rounded-xl bg-primary px-4 text-[#0d1b13] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors shadow-sm shadow-primary/25">
-                            <span className="truncate">Log In</span>
-                        </button>
-
-                        {/* Search Icon */}
-                        <button className="flex size-10 items-center justify-center rounded-xl text-[#0d1b13] dark:text-white hover:bg-surface-light dark:hover:bg-surface-dark transition-colors">
-                            <span className="material-symbols-outlined">search</span>
-                        </button>
-
-                        {/* Mobile Menu Button */}
-                        <button className="flex md:hidden size-10 items-center justify-center rounded-xl text-[#0d1b13] dark:text-white hover:bg-surface-light dark:hover:bg-surface-dark transition-colors">
-                            <span className="material-symbols-outlined">menu</span>
-                        </button>
-                    </div>
-                </div>
+                <ul
+                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                    <li><a>Homepage</a></li>
+                    <li><a>Portfolio</a></li>
+                    <li><a>About</a></li>
+                </ul>
             </div>
-        </header>
-    );
+        </div>
+        <div className="navbar-center">
+            <a className="btn btn-ghost text-xl">daisyUI</a>
+        </div>
+        <div className="navbar-end">
+            <button className="btn btn-ghost btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /> </svg>
+            </button>
+            <button className="btn btn-ghost btn-circle">
+                <div className="indicator">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /> </svg>
+                    <span className="badge badge-xs badge-primary indicator-item"></span>
+                </div>
+            </button>
+        </div>
+    </div>);
 };
