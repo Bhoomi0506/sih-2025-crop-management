@@ -2,7 +2,7 @@
   "name": "sih-2025-crop-management",
   "homepage": "https://github.com/Bhoomi0506/sih-2025-crop-management.git>",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
