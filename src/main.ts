@@ -1,24 +1,37 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import type { StorybookConfig } from '@storybook/react-vite';
+import tailwindcss from '@tailwindcss/vite';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+const config: StorybookConfig = {
+    framework: '@storybook/react-vite',
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+    // Stories location pattern
+    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+
+    // Addons (currently empty, can add more as needed)
+    addons: [],
+
+    // Documentation configuration
+    docs: {
+        defaultName: 'Documentation',
+    },
+
+    // TypeScript configuration
+    typescript: {
+        check: false, // Disable type-checking during Storybook build
+        reactDocgen: 'react-docgen-typescript',
+        reactDocgenTypescriptOptions: {
+            shouldExtractLiteralValuesFromEnum: true,
+            propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+        },
+    },
+
+    // Vite configuration customization
+    async viteFinal(config) {
+        // Add Tailwind CSS plugin to Storybook's Vite config
+        config.plugins = config.plugins || [];
+        config.plugins.push(tailwindcss());
+        return config;
+    },
+};
+
+export default config;
